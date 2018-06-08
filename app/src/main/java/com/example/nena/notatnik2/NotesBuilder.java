@@ -1,15 +1,15 @@
 package com.example.nena.notatnik2;
 
-public class KonstruktorNotatki {
+public class NotesBuilder {
 
 
     private String title,
             content;
 
-    public KonstruktorNotatki() {
+    public NotesBuilder() {
     }
 
-    public KonstruktorNotatki(String title, String content) {
+    public NotesBuilder(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -22,3 +22,4 @@ public class KonstruktorNotatki {
         return content;
     }
 }
+

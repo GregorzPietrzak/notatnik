@@ -1,5 +1,6 @@
 package com.example.nena.notatnik2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,11 +21,10 @@ import java.util.List;
 
 public class WyborNotatki extends AppCompatActivity {
 
-    private List & lt;
-    KonstruktorNotatki & gt;
-    notesList = new ArrayList & lt; & gt;
+    private List <NotesBuilder>
+    notesList = new ArrayList<>
     ();
-    private Adapter nAdapter;
+    private RecyclerView.Adapter nAdapter;
     private RecyclerView notesRecycler;
 
     @Override
@@ -38,12 +38,15 @@ public class WyborNotatki extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent myIntent = new Intent(WyborNotatki.this, MainActivity.class);
+                WyborNotatki.this.startActivity(myIntent);
             }
         });
 
-        nAdapter = new Adapter(notesList);
+
+        notesRecycler = (RecyclerView) findViewById(R.id.notes);
+        nAdapter = new NotesAdapter(notesList);
+
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(getApplicationContext());
         notesRecycler.setLayoutManager(mLayoutManager);
@@ -59,9 +62,9 @@ public class WyborNotatki extends AppCompatActivity {
         directory = getFilesDir();
         File[] files = directory.listFiles();
         String theFile;
-        for (int f = 1; f & lt; = files.length; f++) {
+        for (int f = 1; f <= files.length; f++) {
             theFile = "Note" + f + ".txt";
-            KonstruktorNotatki note = new KonstruktorNotatki(theFile, Open(theFile));
+            NotesBuilder note = new NotesBuilder(theFile, Open(theFile));
             notesList.add(note);
         }
 

@@ -1,5 +1,6 @@
 package com.example.nena.notatnik2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -97,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent myIntent = new Intent(MainActivity.this, WyborNotatki.class);
+            MainActivity.this.startActivity(myIntent);
             return true;
         }
 

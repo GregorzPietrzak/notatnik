@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter&lt; Adapter.MyViewHolder&gt; {
+public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder> {
 
-private List&lt; KonstruktorNotatki&gt; notesList;
+private List<NotesBuilder>
+        notesList;
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
     public TextView title, content;
@@ -22,7 +24,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     }
 }
 
-    public Adapter(List & lt;KonstruktorNotatki& gt; notesList) {
+    public NotesAdapter(List <NotesBuilder> notesList) {
         this.notesList = notesList;
     }
 
@@ -36,7 +38,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        KonstruktorNotatki note = notesList.get(position);
+        NotesBuilder note = notesList.get(position);
         holder.title.setText(note.getTitle());
         holder.content.setText(note.getContent());
     }
